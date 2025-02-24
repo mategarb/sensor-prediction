@@ -50,7 +50,7 @@ if (length(coords2) >= 1){
   hgnc_symbol <- all.genes3[1,"hgnc_symbol"] # always first row as the are duplicates 
   er <- mean(suppressWarnings(as.numeric(hs_edits2[i,3:4])), na.rm = TRUE)
   sqnc <- unname(as.character(hs_edits2$seqs[i]))
-  sqnc <- reverse(chartr("ATGC","TACG",sqnc)) # reverse complementary
+  #sqnc <- reverse(chartr("ATGC","TACG", sqnc)) # reverse complementary, update: we don't use it now*
   pos <- hs_edits2[i,2]
   chr <- hs_edits2[i,1]
   lst[[j]] <- c(chr, pos, hgnc_symbol, sqnc, er)
@@ -89,3 +89,4 @@ n0 <- sample(which(dfout2$labels=="0"), length(n1), replace=F)
 dfout3 <- dfout2[c(n0,n1),]
 write.csv(dfout3, "//Users//matga374//Desktop//simulated_data//simulated_data_1or0_nt_balanced.csv") # this is the data set I mostly focus on
 
+# *this code needs to be redone cause all the simulated data are generate include reverse complementary sequences
